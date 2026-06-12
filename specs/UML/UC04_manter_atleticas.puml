@@ -1,0 +1,15 @@
+@startuml
+title Atividade: Manter Atléticas [RF004]
+start
+:Moderador acessa "Manter Atléticas";
+:Moderador solicita novo cadastro;
+:Preenche Nome, Cursos, Capitão, Instituto, Campi;
+:Sistema valida Nome [RN003] (Único, 3-255 chars);
+if (Nome válido?) then (sim)
+  :Sistema salva Atlética;
+  :Exibe confirmação;
+else (não)
+  :Exibe erro: Nome inválido ou já existente;
+endif
+stop
+@enduml

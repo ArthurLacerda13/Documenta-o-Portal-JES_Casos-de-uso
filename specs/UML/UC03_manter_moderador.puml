@@ -1,0 +1,19 @@
+@startuml
+title Atividade: Manter Moderador [RF003]
+start
+:Admin acessa área de administração;
+:Admin preenche Matrícula, Nome, E-mail, Senha;
+:Sistema valida unicidade da matrícula;
+if (Matrícula única?) then (sim)
+  :Sistema valida e-mail institucional;
+  if (E-mail válido?) then (sim)
+    :Salva Moderador (Nível 2);
+    :Exibe sucesso;
+  else (não)
+    :Exibe erro: E-mail não institucional;
+  endif
+else (não)
+  :Exibe erro: Matrícula já cadastrada;
+endif
+stop
+@enduml

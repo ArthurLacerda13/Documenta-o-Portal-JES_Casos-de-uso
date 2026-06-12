@@ -1,0 +1,14 @@
+@startuml
+title Atividade: Otimização de Processos [RF009]
+start
+:Evento de sincronização ou cadastro manual iniciado;
+:Sistema conecta ao Banco Acadêmico Institucional;
+:Sistema valida Matrícula/Vínculo via API;
+if (Dados encontrados?) then (sim)
+  :Importa/Atualiza dados do Estudante;
+  :Reduz necessidade de preenchimento manual;
+else (não)
+  :Solicita preenchimento manual completo;
+endif
+stop
+@enduml

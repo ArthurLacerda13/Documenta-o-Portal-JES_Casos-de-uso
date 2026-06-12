@@ -1,0 +1,44 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Usuário Logado" as UL
+actor Capitão as C
+actor Moderador as M
+actor Admin as A
+actor Visitante as V
+
+' Herança conforme modelo
+C --|> UL
+M --|> C
+A --|> M
+
+rectangle "Portal JES" {
+  (Manter Atletas [RF001]) as UC01
+  (Manter Capitão [RF002]) as UC02
+  (Manter Moderador [RF003]) as UC03
+  (Manter Atléticas [RF004]) as UC04
+  (Manter Modalidades [RF005]) as UC05
+  (Manter Equipes [RF006]) as UC06
+  (Manter Partidas [RF007]) as UC07
+  (Carregamento de Dados [RF008]) as UC08
+  (Primeiro Acesso [RF010]) as UC10
+  (Acesso às Estatísticas [RF011]) as UC11
+
+  UC06 ..> UC01 : <<include>>
+  UC06 ..> UC05 : <<include>>
+  UC07 ..> UC04 : <<include>>
+  UC07 ..> UC06 : <<include>>
+}
+
+UL --> UC10
+C --> UC01
+C --> UC06
+M --> UC02
+M --> UC04
+M --> UC05
+M --> UC07
+M --> UC08
+A --> UC03
+V --> UC11
+@enduml

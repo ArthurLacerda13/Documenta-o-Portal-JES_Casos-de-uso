@@ -1,0 +1,13 @@
+@startuml
+title Atividade: Acesso às Estatísticas [RF011]
+start
+:Usuário acessa Homepage Pública;
+:Sistema recupera dados estatísticos;
+:Sistema aplica cache/atraso de max 1 dia [RNF012];
+:Exibe estatísticas gerais;
+if (Usuário aplica filtros?) then (sim)
+  :Sistema filtra por modalidade/atlética;
+  :Atualiza visualização;
+endif
+stop
+@enduml

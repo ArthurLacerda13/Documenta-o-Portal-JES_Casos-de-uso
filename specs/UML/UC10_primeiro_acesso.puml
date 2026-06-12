@@ -1,0 +1,18 @@
+@startuml
+title Atividade: Primeiro Acesso [RF010]
+start
+:Usuário realiza Login com senha padrão;
+if (É o primeiro acesso?) then (sim)
+  :Sistema redireciona para Tela de Troca de Senha;
+  repeat
+    :Usuário insere nova senha;
+    :Sistema valida Senha Forte [RNF006];
+  backward:Exibe requisitos de senha;
+  repeat while (Senha válida?) is (não)
+  :Sistema salva nova senha;
+  :Libera acesso ao Dashboard;
+else (não)
+  :Acesso normal ao Dashboard;
+endif
+stop
+@enduml

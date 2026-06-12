@@ -1,13 +1,19 @@
 # Diagrama Geral de Casos de Uso - Portal JES
 
-Este diagrama representa a visão geral dos casos de uso do sistema, relacionando os atores (Admin, Moderador, Capitão e Visitante) às funcionalidades principais.
+Este diagrama representa a visão geral do sistema, utilizando herança de atores para otimizar os relacionamentos conforme o modelo.
 
 ```mermaid
 useCaseDiagram
-    actor Admin
-    actor Moderador
-    actor Capitão
-    actor Visitante
+    actor "Usuário Logado" as UL
+    actor Capitão as C
+    actor Moderador as M
+    actor Admin as A
+    actor Visitante as V
+
+    %% Generalização/Herança
+    C --|> UL
+    M --|> C
+    A --|> M
 
     package "Portal JES" {
         usecase UC01 as "Manter Atletas [RF001]"
@@ -17,38 +23,25 @@ useCaseDiagram
         usecase UC05 as "Manter Modalidades [RF005]"
         usecase UC06 as "Manter Equipes [RF006]"
         usecase UC07 as "Manter Partidas [RF007]"
-        usecase UC08 as "Carregamento de Dados (Planilha) [RF008]"
-        usecase UC09 as "Otimização de Processos [RF009]"
-        usecase UC10 as "Primeiro Acesso (Troca Senha) [RF010]"
+        usecase UC08 as "Carregamento de Dados [RF008]"
+        usecase UC10 as "Primeiro Acesso [RF010]"
         usecase UC11 as "Acesso às Estatísticas [RF011]"
     }
 
-    Admin --> UC03
-    Admin --> UC08
-    Admin --> UC10
+    UL --> UC10
+    C --> UC01
+    C --> UC06
+    M --> UC02
+    M --> UC04
+    M --> UC05
+    M --> UC07
+    M --> UC08
+    A --> UC03
+    V --> UC11
 
-    Moderador --> UC02
-    Moderador --> UC04
-    Moderador --> UC05
-    Moderador --> UC07
-    Moderador --> UC08
-    Moderador --> UC10
-
-    Capitão --> UC01
-    Capitão --> UC06
-    Capitão --> UC10
-
-    Visitante --> UC11
-    
-    %% Relacionamentos de dependência
+    %% Relacionamentos <<include>>
     UC06 ..> UC01 : <<include>>
     UC06 ..> UC05 : <<include>>
     UC07 ..> UC04 : <<include>>
     UC07 ..> UC06 : <<include>>
 ```
-
-## Resumo dos Atores
-- **Admin (Nível 3):** Responsável pela gestão de moderadores e carga massiva de dados.
-- **Moderador (Nível 2):** Responsável pela gestão de atletas (promoção a capitão), atléticas, modalidades e partidas.
-- **Capitão (Nível 1):** Responsável por cadastrar atletas e montar as equipes de sua atlética.
-- **Visitante:** Usuário anônimo que consome as estatísticas públicas.

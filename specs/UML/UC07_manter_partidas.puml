@@ -1,0 +1,11 @@
+@startuml
+title Atividade: Manter Partidas [RF007]
+start
+:Moderador define Detalhes da Partida;
+:Moderador seleciona Equipes e Local;
+:Sistema salva Partida;
+:Sistema aciona RN005;
+:Sistema gera Súmula Digital personalizada;
+:Partida publicada na Homepage;
+stop
+@enduml

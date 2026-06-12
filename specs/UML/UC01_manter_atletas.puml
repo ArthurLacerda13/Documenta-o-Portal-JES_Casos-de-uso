@@ -1,0 +1,29 @@
+@startuml
+title Atividade: Manter Atletas [RF001]
+start
+:Capitão acessa "Manter Atletas";
+:Sistema exibe lista de atletas;
+if (Deseja cadastrar novo?) then (sim)
+  :Capitão insere Nome, Matrícula, Foto, Sexo, Data de Nascimento;
+  :Sistema valida Matrícula [RN001];
+  if (Matrícula válida?) then (sim)
+    :Sistema valida Idade [RN002];
+    if (Idade entre 14 e 100?) then (sim)
+      :Sistema salva registro;
+      :Exibe mensagem de sucesso;
+    else (não)
+      :Exibe erro: Idade fora do limite;
+      stop
+    endif
+  else (não)
+    :Exibe erro: Matrícula inválida;
+    stop
+  endif
+else (não)
+  if (Deseja Editar/Excluir?) then (sim)
+    :Realiza operação;
+  endif
+endif
+:Retorna à lista atualizada;
+stop
+@enduml

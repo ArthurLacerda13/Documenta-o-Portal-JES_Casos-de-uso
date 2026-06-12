@@ -1,0 +1,10 @@
+@startuml
+title Atividade: Manter Modalidades [RF005]
+start
+:Moderador acessa gestão de Modalidades;
+:Define Nome, Categoria, Tipo;
+:Define limites de atletas (min/max) e vagas;
+:Sistema salva configurações;
+:Exibe confirmação;
+stop
+@enduml

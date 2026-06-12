@@ -1,0 +1,17 @@
+@startuml
+title Atividade: Manter Capitão [RF002]
+start
+:Moderador acessa gerenciamento de atletas;
+:Moderador busca atleta;
+:Sistema exibe resultados;
+:Moderador seleciona atleta;
+:Moderador solicita alteração para "Capitão";
+if (Atleta possui cargo administrativo?) then (não)
+  :Sistema atualiza cargo para Capitão;
+  :Sistema atualiza permissões;
+  :Exibe confirmação;
+else (sim)
+  :Exibe alerta de conflito de cargos;
+endif
+stop
+@enduml

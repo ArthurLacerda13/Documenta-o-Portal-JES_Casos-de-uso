@@ -1,0 +1,23 @@
+@startuml
+title Atividade: Manter Equipes [RF006]
+start
+:Capitão seleciona Modalidade;
+:Capitão seleciona Atletas da sua Atlética;
+:Sistema valida se atletas são da mesma atlética;
+if (Atletas válidos?) then (sim)
+  :Sistema valida limites da modalidade [RF005];
+  if (Dentro dos limites?) then (sim)
+    :Sistema verifica duplicidade [RN004];
+    if (Atletas não estão em outras equipes da modalidade?) then (sim)
+      :Confirma inscrição da equipe;
+    else (não)
+      :Exibe erro: Atleta duplicado;
+    endif
+  else (não)
+    :Exibe erro: Limite de atletas violado;
+  endif
+else (não)
+  :Exibe erro: Atleta de outra atlética;
+endif
+stop
+@enduml

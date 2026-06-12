@@ -1,0 +1,14 @@
+@startuml
+title Atividade: Carregamento de Dados [RF008]
+start
+:Usuário faz upload de planilha (.xlsx/.csv);
+:Sistema inicia processamento;
+:Sistema valida registros [RN006];
+if (Erros encontrados?) then (sim)
+  :Exibe lista de erros e avisos;
+  :Usuário corrige ou ignora linhas inválidas;
+endif
+:Usuário confirma importação;
+:Sistema popula banco de dados em lote;
+stop
+@enduml
